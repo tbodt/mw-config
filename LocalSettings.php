@@ -11,8 +11,10 @@ $wikis = [
 ];
 if ( defined( 'MW_DB' ) ) {
 	$wgDBname = MW_DB;
+} elseif ( isset( $_SERVER[ 'MW_DB' ] ) ) {
+	$wgDBname = $_SERVER[ 'MW_DB' ];
 } else {
-	$wgDBname = $wikis[ $_SERVER['SERVER_NAME'] ?? '' ] ?? null;
+	$wgDBname = $wikis[ $_SERVER['HTTP_HOST'] ?? '' ] ?? null;
 }
 if ( !$wgDBname ) {
 	die( 'ma lipu seme' );
@@ -24,9 +26,11 @@ $wgLocalDatabases = $wgConf->wikis = array_values( $wikis );
 $wgConf->settings = [
 	'wgServer' => [
 		'wikipesija' => 'https://wikipesija.org',
+		'sonasuli' => 'https://sona-suli.pona.la',
 	],
 	'wgSitename' => [
 		'wikipesija' => 'Wikipesija',
+		'sonasuli' => 'sona suli',
 	],
 	'wgLogos' => [
 		'wikipesija' => [
@@ -249,7 +253,9 @@ $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
 $wgShowSQLErrors = true;
 
-#$wgReadOnly = ( PHP_SAPI === 'cli' ) ? false : 'mi jan Tepo li sin e ilo tawa nanpa 1.39. pakala suli li lon la o toki tawa mi!';
+if ( PHP_SAPI === 'cli' ) {
+	$wgReadOnly = false;
+}
 
 /*
 $wgShowExceptionDetails = true;
