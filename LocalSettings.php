@@ -17,7 +17,7 @@ if ( defined( 'MW_DB' ) ) {
 	$wgDBname = $wikis[ $_SERVER['HTTP_HOST'] ?? '' ] ?? null;
 }
 if ( !$wgDBname ) {
-	die( 'ma lipu seme' );
+	die( 'ma lipu seme\n' );
 }
 $wgLocalDatabases = $wgConf->wikis = array_values( $wikis );
 
@@ -147,6 +147,7 @@ $wgSharedTables[] = "actor";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_ACCEL; # changed
+$wgParserCacheType = CACHE_DB;
 $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
@@ -247,7 +248,7 @@ wfLoadExtension( 'Discord' );
 $wgDiscordUseEmojis = true;
 wfLoadExtension( 'Popups' );
 wfLoadExtension( 'Linter' );
-//wfLoadExtension( 'DiscussionTools' );
+wfLoadExtension( 'DiscussionTools' );
 
 $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
