@@ -250,6 +250,7 @@ wfLoadExtension( 'Popups' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'DiscussionTools' );
 wfLoadExtension( 'MultiTitle' );
+wfLoadExtension( 'CategoryTree' );
 
 $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
