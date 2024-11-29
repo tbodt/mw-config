@@ -249,6 +249,7 @@ $wgDiscordUseEmojis = true;
 wfLoadExtension( 'Popups' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'DiscussionTools' );
+wfLoadExtension( 'MultiTitle' );
 
 $wgShowExceptionDetails = true;
 $wgShowDBErrorBacktrace = true;
